@@ -72,27 +72,36 @@ const Avatar = styled.img`
 `;
 
 const Navbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const dispatch = useDispatch();
 
-
   const { currentUser } = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    document.cookie = "access_token=; Max-Age=0;secure";
+    dispatch(logout());
+    navigate("/home");
+  };
+
   return (
     <>
       <Container>
         <Wrapper>
           <Search>
-            <Input placeholder="Search" onChange={e=>setQ(e.target.value)}/>
-            <SearchIcon onClick={()=>navigate(`/search?q=${q}`)}/>
+            <Input
+              placeholder="Search"
+              onChange={(e) => setQ(e.target.value)}
+            />
+            <SearchIcon onClick={() => navigate(`/search?q=${q}`)} />
           </Search>
           {currentUser ? (
             <User>
               <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
               <Avatar src={currentUser.img} />
               {currentUser.name}
-              <Button onClick={() => dispatch(logout())}>Logout</Button>
+              <Button onClick={handleLogout}>Logout</Button>
             </User>
           ) : (
             <Link
@@ -106,7 +115,7 @@ const Navbar = () => {
           )}
         </Wrapper>
       </Container>
-      {open && <Upload setOpen={setOpen}/>}
+      {open && <Upload setOpen={setOpen} />}
     </>
   );
 };

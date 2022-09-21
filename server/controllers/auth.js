@@ -35,7 +35,7 @@ export const signin = async (req, res, next) => {
 
     res
       .cookie("access_token", token, {
-        httpOnly: true,
+        httpOnly: false,
       })
       .status(200)
       .json(others);
@@ -51,7 +51,7 @@ export const googleAuth = async (req, res, next) => {
       const token = jwt.sign({ id: user._id }, process.env.JWT);
       res
       .cookie("access_token", token, {
-        httpOnly: true,
+        httpOnly: false,
       })
       .status(200)
       .json(user._doc);
