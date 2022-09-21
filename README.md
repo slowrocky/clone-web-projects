@@ -11,22 +11,24 @@
 - [ ]  edit videos info
 
 ### Comments
+
 - [ ] like/dislike comments
 - [ ] respond to comment
 - [ ] edit comment
 - [ ] delete comment
 
-
 ### Pages
+
 - [x] / - add link to home button
-- [x] /trends - explore 
-- [x] /subscriptions 
+- [x] /trends - explore
+- [x] /subscriptions
 - [ ] /library
 - [ ] /history
 - [ ] /dashboard - create administration of channel account
 - [ ] /playlist
 
 ### Menu
+
 - [ ] add links to subscribed channels
 - [ ] add links for categories videos
 - [ ] implement help pop up with FAQ
