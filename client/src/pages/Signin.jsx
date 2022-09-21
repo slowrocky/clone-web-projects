@@ -84,6 +84,16 @@ const Signin = () => {
     }
   };
 
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("/auth/signup", { name, email, password });
+      setName("");
+      setEmail("");
+      setPassword("");
+    } catch (err) {}
+  };
+
   const signInWithGoogle = async () => {
     dispatch(loginStart());
     signInWithPopup(auth, provider)
@@ -130,7 +140,7 @@ const Signin = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Sign up</Button>
+        <Button onClick={handleSignUp}>Sign up</Button>
       </Wrapper>
       <More>
         English(USA)

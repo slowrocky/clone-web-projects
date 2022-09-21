@@ -3,9 +3,10 @@ import styled from "styled-components";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import Upload from "./Upload";
+import { logout } from "../redux/userSlice";
 
 const Container = styled.div`
   postion: sticky;
@@ -74,6 +75,8 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
+  const dispatch = useDispatch();
+
 
   const { currentUser } = useSelector((state) => state.user);
   return (
@@ -89,6 +92,7 @@ const Navbar = () => {
               <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
               <Avatar src={currentUser.img} />
               {currentUser.name}
+              <Button onClick={() => dispatch(logout())}>Logout</Button>
             </User>
           ) : (
             <Link
