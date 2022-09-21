@@ -18,7 +18,7 @@
 
 
 ### Pages
-- [ ] / - add link to home button
+- [x] / - add link to home button
 - [x] /trends - explore 
 - [x] /subscriptions 
 - [ ] /library
