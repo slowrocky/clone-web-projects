@@ -204,11 +204,11 @@ const Video = () => {
               <Description>{currentVideo.desc}</Description>
             </ChannelDetail>
           </ChannelInfo>
-          <Subscribe onClick={handleSub}>
+          {currentUser === null ? <></> : <Subscribe onClick={handleSub}>
             {currentUser.subscribedUsers?.includes(channel._id)
               ? "SUBSCRIBED"
               : "SUBSCRIBE"}
-          </Subscribe>
+          </Subscribe>}
         </Channel>
         <Hr />
         <Comments videoId={currentVideo._id} />

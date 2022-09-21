@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { loginFailure, loginSuccess, loginStart } from "../redux/userSlice";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -72,6 +73,7 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -79,8 +81,10 @@ const Signin = () => {
     try {
       const res = await axios.post("/auth/signin", { name, password });
       dispatch(loginSuccess(res.data));
+      navigate("/")
     } catch (err) {
       dispatch(loginFailure());
+      navigate("/signin")
     }
   };
 
@@ -91,6 +95,7 @@ const Signin = () => {
       setName("");
       setEmail("");
       setPassword("");
+      navigate("/signin")
     } catch (err) {}
   };
 
@@ -106,10 +111,12 @@ const Signin = () => {
           })
           .then((res) => {
             dispatch(loginSuccess(res.data));
+            navigate("/")
           });
       })
       .catch((err) => {
         dispatch(loginFailure());
+        navigate("/signin")
       });
   };
   return (
