@@ -96,10 +96,12 @@ const Menu = ({ darkMode, setDarkMode }) => {
             SlowrockTube
           </Logo>
         </Link>
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <HomeIcon />
+            Home
+          </Item>
+        </Link>
         <Link to="trends" style={{ textDecoration: "none", color: "inherit" }}>
           <Item>
             <ExploreIcon />
@@ -125,7 +127,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
           History
         </Item>
         <Hr />
-        {!currentUser &&
+        {!currentUser && (
           <>
             {" "}
             <Login>
@@ -142,7 +144,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
             </Login>
             <Hr />
           </>
-        }
+        )}
         <Title>BEST OF SLOWROCKTUBE</Title>
         <Item>
           <LibraryMusicIcon />
